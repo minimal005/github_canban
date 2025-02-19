@@ -1,9 +1,11 @@
-import { Box, Button, Flex, Grid, Input, Link, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Grid, Input, Text } from '@chakra-ui/react';
 import './App.css';
 import { useState } from 'react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Column } from './components/Column';
 import { Issue } from './utils/types/Issue';
+import React from 'react';
+import { BreadCrumbs } from './components/BreadCrumbs';
 
 const issues: Issue[] = [
   {
@@ -44,30 +46,53 @@ export const App = () => {
   const [search, setSearch] = useState('');
 
   return (
-    <Box p={6} bg="gray.900" minH="100vh" color="white">
+    <Box p={6} bg="gray.900" minH="100vh" color="gray.400">
       <Flex mb={4} gap={2}>
-        <Input
-          placeholder="Search issues..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+        <Flex
           bg="gray.800"
-        />
-        <Button colorScheme="red">✖</Button>
-        <Button colorScheme="blue">Load Issues</Button>
-        <Button colorScheme="green">I'm lazy, find random repo</Button>
+          w="320px"
+          borderRadius="md"
+          borderStyle="solid"
+          borderWidth="1px"
+          borderColor="#ffffff11"
+          _hover={{ borderColor: 'blue.600', transition: 'color 0.3s ease-in-out' }}
+          _focus={{ borderColor: 'blue.600', transition: 'color 0.3s ease-in-out' }}
+        >
+          <Input
+            className="searchField"
+            placeholder="Search issues..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Flex
+            w="45px"
+            alignItems="center"
+            justify="center"
+            borderLeftStyle="solid"
+            borderLeftWidth="1px"
+            borderLeftColor="gray.700"
+            cursor="pointer"
+            _hover={{ color: 'blue.600', transition: 'color 0.3s ease-in-out' }}
+          >
+            ✖
+          </Flex>
+        </Flex>
+        <Button bgColor="gray.700" h="100%" color="gray.400" _hover={{ borderColor: 'blue.600' }}>
+          Load Issues
+        </Button>
       </Flex>
-
-      <Flex mb={4} align="center" fontSize="lg">
-        <Link color="blue.400">mangoszero</Link>
-        <Text mx={2}>{'>'}</Text>
-        <Link color="blue.400">server</Link>
-        <StarIcon color="yellow.400" mr={1} width="3" /> 933
+      <Flex mb={4} align="center" gap="15px">
+        <BreadCrumbs />
+        <Flex align="center" gap="5px">
+          <StarIcon color="yellow.400" mr={1} width="3" />
+          <Text as="span">933 stars</Text>
+        </Flex>
       </Flex>
 
       <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-        <Column title="open" issues={issues.filter((i) => i.status === 'open')} />
-        <Column title="inProgress" issues={issues.filter((i) => i.status === 'inProgress')} />
-        <Column title="closed" issues={issues.filter((i) => i.status === 'closed')} />
+        <Column title="Open" issues={issues.filter((i) => i.status === 'open')} />
+        <Column title="InProgress" issues={issues.filter((i) => i.status === 'inProgress')} />
+        <Column title="Closed" issues={issues.filter((i) => i.status === 'closed')} />
       </Grid>
     </Box>
   );

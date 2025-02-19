@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/react';
 import React from 'react';
 
 export const Card = ({ issue }: { issue: Issue }) => (
-  <Box bg="blue.700" p={4} borderRadius="md" shadow="md">
+  <Box bg="gray.700" p={4} borderRadius="md" shadow="md">
     <Text fontWeight="bold">{issue.title}</Text>
     <Text fontSize="sm">
       #{issue.id} opened {issue.date}

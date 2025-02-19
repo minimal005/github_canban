@@ -6,11 +6,23 @@ export const BreadCrumbs = () => {
     <Breadcrumb.Root size="md">
       <Breadcrumb.List>
         <Breadcrumb.Item textStyle="lg">
-          <Breadcrumb.Link href="#">Facebook</Breadcrumb.Link>
+          <Breadcrumb.Link
+            href="#"
+            color="blue.500"
+            _hover={{ color: 'blue.600', transition: 'color 0.3s ease-in-out' }}
+          >
+            Facebook
+          </Breadcrumb.Link>
         </Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item textStyle="lg">
-          <Breadcrumb.Link href="#">React</Breadcrumb.Link>
+          <Breadcrumb.Link
+            href="#"
+            color="blue.500"
+            _hover={{ color: 'blue.600', transition: 'color 0.3s ease-in-out' }}
+          >
+            React
+          </Breadcrumb.Link>
         </Breadcrumb.Item>
       </Breadcrumb.List>
     </Breadcrumb.Root>
