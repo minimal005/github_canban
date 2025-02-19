@@ -8,6 +8,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'prettier',
+    'next/core-web-vitals',
   ],
   overrides: [
     {
@@ -42,6 +43,8 @@ module.exports = {
       },
     },
     plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
-    rules: {},
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+    },
   },
 };
